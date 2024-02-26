@@ -20,6 +20,9 @@ This is a utility for terminals, inputs and generating code.
 * Created sugar syntax to allow others and myself to create projects like [Switchterm](https://github.com/golangast/switchterm)
 
 
+* [This](https://www.youtube.com/watch?v=XMsiNInyen8) is a walkthrough video on explaining how to use this project.
+
+
 * the following is how you use it and there is an example file in the example folder.
 ```go
 // Parse command line input for a question
