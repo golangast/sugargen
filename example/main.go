@@ -17,6 +17,9 @@ func main() {
 
 	// show a list of selection and chosen one is stored
 	var colorsslice = []string{"red", "green", "blue", "yellow"}
+
+	//remember you can set the number from 1 to whatever you want.  1 is the number of columns
+	//to add colors update the colors/colors.go file and use https://en.wikipedia.org/wiki/ANSI_escape_code#colors
 	coloranswer := input.MenuInstuctions(colorsslice, 1, "purple", "purple", "which color do you prefer to use?")
 	fmt.Println(coloranswer, " is the right answer")
 
