@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"log"
 	"log/slog"
 	"os"
@@ -67,9 +66,43 @@ func TrimDotright(s string) string {
 	return s
 }
 
-func UpdateText(file, check, comment, replace string) error {
+func UpdateText(f string, o string, n string) error {
+	input, err := os.ReadFile(f)
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	output := bytes.Replace(input, []byte(o), []byte(n), -1)
+
+	if err = os.WriteFile(f, output, 0666); err != nil {
+		fmt.Println(err)
+	}
+
+	return nil
+}
+func UpdateTexts(file, check, comment, replace string) error {
 	if FindTextNReturn(file, check) != comment {
-		err := UpdateTexts(file, comment, replace+"\n"+comment)
+		err := UpdateText(file, comment, replace+"\n"+comment)
+		if err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+func RemoveText(file, check, comment, replace string) error {
+	if FindTextNReturn(file, check) != comment {
+		err := UpdateText(file, comment, replace+"\n")
+		if err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+func UpdateCode(file, check, comment, replace string) error {
+	if FindTextNReturn(file, check) != comment {
+		err := UpdateText(file, check, replace+"\n"+comment)
 		if err != nil {
 			return err
 		}
@@ -88,20 +121,7 @@ func Checklogger(err error, s string) {
 }
 
 // f is for file, o is for old text, n is for new text
-func UpdateTexts(f string, o string, n string) error {
-	input, err := ioutil.ReadFile(f)
-	if err != nil {
-		fmt.Println(err)
-	}
 
-	output := bytes.Replace(input, []byte(o), []byte(n), -1)
-
-	if err = ioutil.WriteFile(f, output, 0666); err != nil {
-		fmt.Println(err)
-	}
-
-	return nil
-}
 func FindTextNReturn(p, str string) string {
 	// Open file for reading.
 	var file, err = os.OpenFile(p, os.O_RDWR, 0644)

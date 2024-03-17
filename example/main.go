@@ -46,7 +46,7 @@ func main() {
 	}
 
 	//now lets try to update the text "template map" in the file to "template cat".
-	text.UpdateText(answer+"/"+coloranswer+".txt", "template map", "template map", "template cat")
+	text.UpdateTexts(answer+"/"+coloranswer+".txt", "template map", "template map", "template cat")
 
 	//now lets spit out whats in the file using bach in go.
 	if err := bash.ShellBash("cat ./" + answer + "/" + coloranswer + ".txt"); err != nil {
