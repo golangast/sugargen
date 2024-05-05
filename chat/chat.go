@@ -40,6 +40,7 @@ func CheckIfSpanLimitsEqualText(models, file string) {
 	//get data
 	data, err := os.ReadFile(file)
 	if err != nil {
+		fmt.Println("please make a json file that has training data.  One can be found here https://github.com/golangast/sugargen/blob/main/example/server.json")
 		panic(err)
 	}
 	//turn into a model blob
