@@ -1,0 +1,168 @@
+[
+    {
+      "Text": "Please run the gen server now",
+      "Spans": [
+        {
+          "Start": 15,
+          "End": 19,
+          "Label": "server"
+        }
+      ],
+      "Answer": "accept"
+    },
+    {
+      "Text": "I'd like to start a new web server",
+      "Spans": [
+        {
+          "Start": 12,
+          "End": 34,
+          "Label": "server"
+        }
+      ],
+      "Answer": "accept"
+    },
+    {
+      "Text": "Can you deploy the application server?",
+      "Spans": [
+        {
+          "Start": 9,
+          "End": 37,
+          "Label": "server"
+        }
+      ],
+      "Answer": "accept"
+    },
+    {
+      "Text": "List all the running servers on this machine",
+      "Spans": [
+        {
+          "Start": 13,
+          "End": 28,
+          "Label": "server"
+        }
+      ],
+      "Answer": "reject"
+    },
+    {
+      "Text": "Please run the gen server now",
+      "Spans": [
+        {
+          "Start": 15,
+          "End": 19,
+          "Label": "server"
+        }
+      ],
+      "Answer": "accept"
+    },
+    {
+      "Text": "I'd like to start the gen server",
+      "Spans": [
+        {
+          "Start": 22,
+          "End": 32,
+          "Label": "server"
+        }
+      ],
+      "Answer": "accept"
+    },
+    {
+      "Text": "Can you activate the gen server?",
+      "Spans": [
+        {
+          "Start": 21,
+          "End": 31,
+          "Label": "server"
+        }
+      ],
+      "Answer": "accept"
+    },
+    {
+      "Text": "Is it possible to launch the gen server?",
+      "Spans": [
+        {
+          "Start": 28,
+          "End": 39,
+          "Label": "server"
+        }
+      ],
+      "Answer": "accept"
+    },
+    {
+      "Text": "Could you initiate the gen server process?",
+      "Spans": [
+        {
+          "Start": 23,
+          "End": 34,
+          "Label": "server"
+        }
+      ],
+      "Answer": "accept"
+    },
+    {
+      "Text": "Let's get the gen server going",
+      "Spans": [
+        {
+          "Start": 14,
+          "End": 24,
+          "Label": "server"
+        }
+      ],
+      "Answer": "accept"
+    },
+    {
+      "Text": "Time to fire up the gen server, I guess",
+      "Spans": [
+        {
+          "Start": 20,
+          "End": 30,
+          "Label": "server"
+        }
+      ],
+      "Answer": "accept"
+    },
+    {
+      "Text": "Mind starting the gen server?",
+      "Spans": [
+        {
+          "Start": 18,
+          "End": 28,
+          "Label": "server"
+        }
+      ],
+      "Answer": "accept"
+    },
+    {
+      "Text": "Can we boot up the gen server?",
+      "Spans": [
+        {
+          "Start": 19,
+          "End": 29,
+          "Label": "server"
+        }
+      ],
+      "Answer": "accept"
+    },
+    {
+      "Text": "Run the gen server",
+      "Spans": [
+        {
+          "Start": 8,
+          "End": 18,
+          "Label": "server"
+        }
+      ],
+      "Answer": "accept"
+    },
+    {
+      "Text": "Start the gen server process",
+      "Spans": [
+        {
+          "Start": 10,
+          "End": 20,
+          "Label": "server"
+        }
+      ],
+      "Answer": "accept"
+    }
+  ]
+  

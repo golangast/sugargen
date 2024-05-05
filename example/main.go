@@ -2,8 +2,10 @@ package main
 
 import (
 	"fmt"
+	"slices"
 
 	"github.com/golangast/sugargen/bash"
+	"github.com/golangast/sugargen/chat"
 	"github.com/golangast/sugargen/filefolder"
 	"github.com/golangast/sugargen/gen"
 	"github.com/golangast/sugargen/input"
@@ -52,7 +54,45 @@ func main() {
 	if err := bash.ShellBash("cat ./" + answer + "/" + coloranswer + ".txt"); err != nil {
 		text.Checklogger(err, "trying to do bash in go")
 	}
-	//now you have the ability to get user input two different ways and generate files, update text, and use bash
+
+	//start training the model! specify the model name and the filename
+	chat.CheckIfSpanLimitsEqualText("server", "server.json")
+
+	//use an input to ask a question
+	ans := input.InputScanDirections("What would you like to do?")
+	//get data from the model
+	text, label := chat.GetTextLabelFromGlob(ans)
+	fmt.Println(text)
+	fmt.Println(label)
+
+	//start to use that data to run commands!
+	if slices.Contains(label, "server") {
+		fmt.Println("Starting the server...")
+	}
+	//a training file is required and it does have to have pre-processed data
+	//in a particular format.
+	/*
+		[
+			{
+			    "Text": "sentence that contains the text or phrase",
+			    "Spans": [
+			      {
+			        "Start": 13, //where the word or phrase starts
+			        "End": 28, //where the word or phrase ends
+			        "Label": "server" //name of the mobel
+			      }
+			    ],
+			    "Answer": "reject" //whether it will be accepted or rejected
+			  },
+			]
+			  technically you can add spans and create more models and
+			  change the format but you will need to update the data structure
+
+			  right now we are going to use /server.json
+			  The name of the model does matter
+	*/
+	//now you have the ability to get user input two different ways and generate files, update text, use bash,
+	//and train a model and use that data for commands
 
 	//the rest is up to you!
 }
