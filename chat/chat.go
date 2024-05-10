@@ -11,11 +11,11 @@ import (
 )
 
 // seperator for good and bad data
-func CollectAcceptedRejected(data []ProdigyOutput) ([]prose.EntityContext, []ProdigyOutput) {
+func CollectAcceptedRejected(data []ProdigyOutput) ([]prose.EntityContext, []prose.EntityContext) {
 	cutoff := int(float64(len(data)) * 0.8) // cutoff for looking through data
 
 	//initialize
-	train, test := []prose.EntityContext{}, []ProdigyOutput{}
+	train, test := []prose.EntityContext{}, []prose.EntityContext{}
 
 	//separate data where one is accepted
 	for i, entry := range data {
@@ -23,7 +23,8 @@ func CollectAcceptedRejected(data []ProdigyOutput) ([]prose.EntityContext, []Pro
 			//simplify data to struct
 			train = append(train, prose.EntityContext{Text: entry.Text, Spans: entry.Spans, Accept: entry.Answer == "accept"})
 		} else {
-			test = append(test, entry)
+			test = append(test, prose.EntityContext{Text: entry.Text, Spans: entry.Spans, Accept: entry.Answer == "reject"})
+			// test = append(test, entry)
 		}
 	}
 
@@ -40,7 +41,7 @@ func CheckIfSpanLimitsEqualText(models, file string) {
 	//get data
 	data, err := os.ReadFile(file)
 	if err != nil {
-		fmt.Println("please make a json file that has training data.  One can be found here https://github.com/golangast/sugargen/blob/main/example/server.json")
+		fmt.Print("please make a json file that has training data.  One can be found here https://github.com/golangast/sugargen/blob/main/example/server.json")
 		panic(err)
 	}
 	//turn into a model blob
@@ -49,6 +50,7 @@ func CheckIfSpanLimitsEqualText(models, file string) {
 		panic(err)
 	}
 	//test is rejected and train is accepted
+
 	train, test := CollectAcceptedRejected(decodedata)
 
 	//create model
@@ -63,7 +65,7 @@ func CheckIfSpanLimitsEqualText(models, file string) {
 		}
 		ents := doc.Entities()
 
-		if entry.Answer != "accept" && len(ents) == 0 { //bad data
+		if !entry.Accept && len(ents) == 0 { //bad data
 			correct++
 
 		} else { //making sure its good data
