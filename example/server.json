@@ -77,6 +77,17 @@
       "Answer": "accept"
     },
     {
+      "Text": "run gen server ",
+      "Spans": [
+        {
+          "Start": 4,
+          "End": 15,
+          "Label": "server"
+        }
+      ],
+      "Answer": "accept"
+    },
+    {
       "Text": "I'd like to start the gen server",
       "Spans": [
         {

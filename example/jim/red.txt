@@ -1,2 +1,0 @@
-This is some text but lets add a template cat
-template map jim

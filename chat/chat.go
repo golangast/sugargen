@@ -32,7 +32,7 @@ func CollectAcceptedRejected(data []ProdigyOutput) ([]prose.EntityContext, []pro
 }
 
 // get data and turn it into a model blob
-func CheckIfSpanLimitsEqualText(models, file string) {
+func CheckAccepted(models, file string) {
 	//clear model blob
 	err := os.RemoveAll("Maxent")
 	if err != nil {
